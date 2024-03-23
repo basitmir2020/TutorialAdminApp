@@ -1,15 +1,16 @@
-FROM node:18-alpine3.19 as angular
+FROM node:18-alpine3.19 AS build
 
-WORKDIR /app
+WORKDIR /src/app
+
+RUN npm cache clean --force
 
 COPY . .
 RUN npm install
-RUN npm run build
+RUN npm run build --prod
 
-FROM httpd:alpine3.15
+FROM nginx:latest AS ngi
 
-WORKDIR /usr/local/apache2/htdocs
+COPY --from=build  /src/app/dist/tutorial-web-app/browser/ /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 
-COPY --from=angular /app/dist/tutorial-web-app .
-
-
+EXPOSE 80
