@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
           lastSegment = lastSegment.replace(/-/g, ' ');
         }
         this.pageTitle = lastSegment;
+        this.isSidebarShown = false;
       });
   }
 

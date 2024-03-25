@@ -1,223 +1,227 @@
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
-       [class.ps]="isSidebarShown" [class.ps--active-y]="isSidebarShown" [class.bg-white]="isSidebarShown"
-       id="sidenav-main">
-  <div class="sidenav-header">
-    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0  d-none d-xl-none"
-       aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" routerLinkActive="active" [routerLink]="['/admin/dashboard']" target="_blank">
-      <img src="assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-      <span class="ms-1 font-weight-bold">Tutorial App</span>
-    </a>
-  </div>
-  <hr class="horizontal dark mt-0">
-  <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/dashboard']">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <title>shop </title>
-              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                  <g transform="translate(1716.000000, 291.000000)">
-                    <g transform="translate(0.000000, 148.000000)">
-                      <path class="color-background opacity-6" d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z"></path>
-                      <path class="color-background" d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z"></path>
+<div class="g-sidenav-show  bg-gray-100" [class.g-sidenav-pinned]="isSidebarShown">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+         [class.ps]="isSidebarShown" [class.ps--active-y]="isSidebarShown" [class.bg-white]="isSidebarShown"
+         id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none"
+         [class.d-none]="!isSidebarShown"
+         aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" routerLinkActive="active" [routerLink]="['/admin/dashboard']" target="_blank">
+        <img src="assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold">Tutorial App</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse w-auto max-height-vh-100 h-100" [class.ps]="isSidebarShown" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/dashboard']">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center
+           justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>shop </title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(0.000000, 148.000000)">
+                        <path class="color-background opacity-6" d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z"></path>
+                        <path class="color-background" d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z"></path>
+                      </g>
                     </g>
                   </g>
                 </g>
-              </g>
-            </svg>
-          </div>
-          <span class="nav-link-text ms-1">Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item mt-3">
-        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Exam Section</h6>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['manage-exam-types']">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
-              <title>award certificate</title>
-              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <path class="color-background opacity-6" d="M17.75,12c0-1.792-1.458-3.25-3.25-3.25s-3.25,1.458-3.25,3.25c0,1.034,.495,1.946,1.25,2.542v2.958c0,.202,.122,.385,.309,.462,.187,.079,.401,.035,.545-.108l1.146-1.146,1.146,1.146c.096,.096,.224,.146,.354,.146,.064,0,.13-.012,.191-.038,.187-.077,.309-.26,.309-.462v-2.958c.755-.596,1.25-1.508,1.25-2.542Zm-3.25-1.75c.965,0,1.75,.785,1.75,1.75s-.785,1.75-1.75,1.75-1.75-.785-1.75-1.75,.785-1.75,1.75-1.75Z" fill="#212121" data-color="color-2"></path>
-                <path class="color-background"  d="M11,15.191c-.802-.871-1.25-1.999-1.25-3.191,0-2.619,2.131-4.75,4.75-4.75,.344,0,.677,.041,1,.11V3.75c0-1.517-1.233-2.75-2.75-2.75H4.25c-1.517,0-2.75,1.233-2.75,2.75V14.25c0,1.517,1.233,2.75,2.75,2.75h6.75v-1.809ZM5.25,5h6c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75H5.25c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75Zm2.5,8h-2.5c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h2.5c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Zm0-3.25h-2.5c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h2.5c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z" fill="#212121"></path>
-              </g>
-            </svg>
-          </div>
-          <span class="nav-link-text ms-1">
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Exam Section</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['manage-exam-types']">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
+                <title>award certificate</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <path class="color-background opacity-6" d="M17.75,12c0-1.792-1.458-3.25-3.25-3.25s-3.25,1.458-3.25,3.25c0,1.034,.495,1.946,1.25,2.542v2.958c0,.202,.122,.385,.309,.462,.187,.079,.401,.035,.545-.108l1.146-1.146,1.146,1.146c.096,.096,.224,.146,.354,.146,.064,0,.13-.012,.191-.038,.187-.077,.309-.26,.309-.462v-2.958c.755-.596,1.25-1.508,1.25-2.542Zm-3.25-1.75c.965,0,1.75,.785,1.75,1.75s-.785,1.75-1.75,1.75-1.75-.785-1.75-1.75,.785-1.75,1.75-1.75Z" fill="#212121" data-color="color-2"></path>
+                  <path class="color-background"  d="M11,15.191c-.802-.871-1.25-1.999-1.25-3.191,0-2.619,2.131-4.75,4.75-4.75,.344,0,.677,.041,1,.11V3.75c0-1.517-1.233-2.75-2.75-2.75H4.25c-1.517,0-2.75,1.233-2.75,2.75V14.25c0,1.517,1.233,2.75,2.75,2.75h6.75v-1.809ZM5.25,5h6c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75H5.25c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75Zm2.5,8h-2.5c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h2.5c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Zm0-3.25h-2.5c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h2.5c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z" fill="#212121"></path>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">
             Exam Types
           </span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['manage-subject']">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
-              <title>book open</title>
-              <g fill="#212121" class="nc-icon-wrapper">
-                <path class="color-background" d="M16.146,2.981c-.748-.441-1.965-.967-3.52-.967h-.002c-1.602,0-2.851,.557-3.624,1.03-.773-.473-2.022-1.03-3.623-1.03h-.002c-1.555,0-2.772,.526-3.52,.967-.536,.315-.855,.877-.855,1.501V13.573c0,.581,.287,1.123,.766,1.45,.473,.322,1.071,.39,1.603,.181,.643-.253,1.314-.382,1.997-.383h.008c1.212,0,2.168,.404,2.757,.744,.038,.022,.08,.031,.119,.05V5.946c0-.414,.336-.75,.75-.75s.75,.336,.75,.75V15.615c.039-.019,.081-.028,.119-.05,.589-.339,1.544-.744,2.757-.744h.007c.683,0,1.354,.13,1.998,.383,.529,.208,1.127,.14,1.601-.182,.481-.328,.768-.871,.768-1.453V4.487c0-.618-.328-1.195-.854-1.506Z" fill="#212121"></path>
-              </g></svg>
-          </div>
-          <span class="nav-link-text ms-1">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['manage-subject']">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
+                <title>book open</title>
+                <g fill="#212121" class="nc-icon-wrapper">
+                  <path class="color-background" d="M16.146,2.981c-.748-.441-1.965-.967-3.52-.967h-.002c-1.602,0-2.851,.557-3.624,1.03-.773-.473-2.022-1.03-3.623-1.03h-.002c-1.555,0-2.772,.526-3.52,.967-.536,.315-.855,.877-.855,1.501V13.573c0,.581,.287,1.123,.766,1.45,.473,.322,1.071,.39,1.603,.181,.643-.253,1.314-.382,1.997-.383h.008c1.212,0,2.168,.404,2.757,.744,.038,.022,.08,.031,.119,.05V5.946c0-.414,.336-.75,.75-.75s.75,.336,.75,.75V15.615c.039-.019,.081-.028,.119-.05,.589-.339,1.544-.744,2.757-.744h.007c.683,0,1.354,.13,1.998,.383,.529,.208,1.127,.14,1.601-.182,.481-.328,.768-.871,.768-1.453V4.487c0-.618-.328-1.195-.854-1.506Z" fill="#212121"></path>
+                </g></svg>
+            </div>
+            <span class="nav-link-text ms-1">
             Subject / Add Chapter
           </span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['manage-questions']">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
-              <title>pen sparkle</title><g fill="#212121" class="nc-icon-wrapper">
-              <path class="color-background opacity-6" d="M5.493,3.492l-.946-.315-.316-.947c-.102-.306-.609-.306-.711,0l-.316,.947-.946,.315c-.153,.051-.257,.194-.257,.356s.104,.305,.257,.356l.946,.315,.316,.947c.051,.153,.194,.256,.355,.256s.305-.104,.355-.256l.316-.947,.946-.315c.153-.051,.257-.194,.257-.356s-.104-.305-.257-.356Z" fill="#212121" data-color="color-2"></path>
-              <path class="color-background opacity-6" d="M16.658,12.99l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474Z" fill="#212121" data-color="color-2"></path>
-              <circle class="color-background opacity-6" cx="7.75" cy="1.75" r=".75" fill="#212121" data-color="color-2"></circle>
-              <path class="color-background" d="M15.151,2.848c-.998-.998-2.739-.998-3.737,0L3.605,10.657c-.862,.863-1.401,3.406-1.594,4.459-.044,.242,.034,.49,.208,.665,.142,.142,.333,.22,.53,.22,.045,0,.09-.004,.134-.012,1.053-.191,3.595-.729,4.46-1.593l7.808-7.809c1.03-1.03,1.03-2.708,0-3.738Z" fill="#212121"></path>
-            </g></svg>
-          </div>
-          <span class="nav-link-text ms-1">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['manage-questions']">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
+                <title>pen sparkle</title><g fill="#212121" class="nc-icon-wrapper">
+                <path class="color-background opacity-6" d="M5.493,3.492l-.946-.315-.316-.947c-.102-.306-.609-.306-.711,0l-.316,.947-.946,.315c-.153,.051-.257,.194-.257,.356s.104,.305,.257,.356l.946,.315,.316,.947c.051,.153,.194,.256,.355,.256s.305-.104,.355-.256l.316-.947,.946-.315c.153-.051,.257-.194,.257-.356s-.104-.305-.257-.356Z" fill="#212121" data-color="color-2"></path>
+                <path class="color-background opacity-6" d="M16.658,12.99l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474Z" fill="#212121" data-color="color-2"></path>
+                <circle class="color-background opacity-6" cx="7.75" cy="1.75" r=".75" fill="#212121" data-color="color-2"></circle>
+                <path class="color-background" d="M15.151,2.848c-.998-.998-2.739-.998-3.737,0L3.605,10.657c-.862,.863-1.401,3.406-1.594,4.459-.044,.242,.034,.49,.208,.665,.142,.142,.333,.22,.53,.22,.045,0,.09-.004,.134-.012,1.053-.191,3.595-.729,4.46-1.593l7.808-7.809c1.03-1.03,1.03-2.708,0-3.738Z" fill="#212121"></path>
+              </g></svg>
+            </div>
+            <span class="nav-link-text ms-1">
             Questions
           </span>
-        </a>
-      </li>
-      <li class="nav-item mt-3">
-        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lookup pages</h6>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" href="#">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-              <g fill="currentColor" class="nc-icon-wrapper">
-                <path class="color-background opacity-6" d="M12.955,3.741c.204,.033,.414-.022,.577-.149l.153-.119c-1.264-1.073-2.898-1.722-4.685-1.722C5.838,1.75,3.156,3.778,2.165,6.601c.682,1.534,1.562,2.732,2.649,3.526l.238,.169c.089,.062,.176,.123,.26,.185,.008,.006,.016,.012,.023,.018,.294,.22,.549,.461,.678,.819,.094,.262,.083,.47,.068,.733-.021,.393-.049,.881,.292,1.447,.313,.52,.718,.733,1.014,.889,.226,.119,.33,.178,.426,.323,.279,.418,.139,1.06,.066,1.316-.012,.043-.024,.082-.037,.125,.378,.061,.762,.101,1.157,.101,3.08,0,5.705-1.924,6.756-4.634-.483-1.093-1.095-1.707-1.865-1.853-.814-.154-1.425,.274-1.918,.618-.416,.289-.686,.468-.959,.413-.157-.029-.231-.102-.48-.401-.232-.278-.55-.66-1.092-.978-.881-.516-1.975-.648-3.259-.395-.127-.359-.222-.881,.022-1.376,.053-.107,.343-.65,.871-.796,.418-.116,.823,.082,1.249,.291,.477,.234,1.129,.554,1.759,.154,.706-.45,.629-1.294,.567-1.973-.045-.49-.096-1.046,.124-1.32,.271-.339,1.067-.434,2.181-.259Z" fill="currentColor" data-color="color-2"></path>
-                <path class="color-background" d="M9,17c-4.411,0-8-3.589-8-8S4.589,1,9,1s8,3.589,8,8-3.589,8-8,8Zm0-14.5c-3.584,0-6.5,2.916-6.5,6.5s2.916,6.5,6.5,6.5,6.5-2.916,6.5-6.5-2.916-6.5-6.5-6.5Z" fill="currentColor"></path>
-              </g>
-            </svg>
-          </div>
-          <span class="nav-link-text ms-1">
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lookup pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" href="#">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                <g fill="currentColor" class="nc-icon-wrapper">
+                  <path class="color-background opacity-6" d="M12.955,3.741c.204,.033,.414-.022,.577-.149l.153-.119c-1.264-1.073-2.898-1.722-4.685-1.722C5.838,1.75,3.156,3.778,2.165,6.601c.682,1.534,1.562,2.732,2.649,3.526l.238,.169c.089,.062,.176,.123,.26,.185,.008,.006,.016,.012,.023,.018,.294,.22,.549,.461,.678,.819,.094,.262,.083,.47,.068,.733-.021,.393-.049,.881,.292,1.447,.313,.52,.718,.733,1.014,.889,.226,.119,.33,.178,.426,.323,.279,.418,.139,1.06,.066,1.316-.012,.043-.024,.082-.037,.125,.378,.061,.762,.101,1.157,.101,3.08,0,5.705-1.924,6.756-4.634-.483-1.093-1.095-1.707-1.865-1.853-.814-.154-1.425,.274-1.918,.618-.416,.289-.686,.468-.959,.413-.157-.029-.231-.102-.48-.401-.232-.278-.55-.66-1.092-.978-.881-.516-1.975-.648-3.259-.395-.127-.359-.222-.881,.022-1.376,.053-.107,.343-.65,.871-.796,.418-.116,.823,.082,1.249,.291,.477,.234,1.129,.554,1.759,.154,.706-.45,.629-1.294,.567-1.973-.045-.49-.096-1.046,.124-1.32,.271-.339,1.067-.434,2.181-.259Z" fill="currentColor" data-color="color-2"></path>
+                  <path class="color-background" d="M9,17c-4.411,0-8-3.589-8-8S4.589,1,9,1s8,3.589,8,8-3.589,8-8,8Zm0-14.5c-3.584,0-6.5,2.916-6.5,6.5s2.916,6.5,6.5,6.5,6.5-2.916,6.5-6.5-2.916-6.5-6.5-6.5Z" fill="currentColor"></path>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">
             Countries
           </span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['add-user']">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
-              <title>user</title>
-              <g fill="#212121" class="nc-icon-wrapper">
-                <circle class="color-background" cx="9" cy="4.5" r="3.5" fill="#212121" data-color="color-2"></circle>
-                <path class="color-background opacity-6" d="M9,9c-2.764,0-5.274,1.636-6.395,4.167-.257,.58-.254,1.245,.008,1.825,.268,.591,.777,1.043,1.399,1.239,1.618,.51,3.296,.769,4.987,.769s3.369-.259,4.987-.769c.622-.196,1.132-.648,1.399-1.239,.262-.58,.265-1.245,.008-1.825-1.121-2.531-3.631-4.167-6.395-4.167Z" fill="#212121"></path>
-              </g>
-            </svg>
-          </div>
-          <span class="nav-link-text ms-1">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['add-user']">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18">
+                <title>user</title>
+                <g fill="#212121" class="nc-icon-wrapper">
+                  <circle class="color-background" cx="9" cy="4.5" r="3.5" fill="#212121" data-color="color-2"></circle>
+                  <path class="color-background opacity-6" d="M9,9c-2.764,0-5.274,1.636-6.395,4.167-.257,.58-.254,1.245,.008,1.825,.268,.591,.777,1.043,1.399,1.239,1.618,.51,3.296,.769,4.987,.769s3.369-.259,4.987-.769c.622-.196,1.132-.648,1.399-1.239,.262-.58,.265-1.245,.008-1.825-1.121-2.531-3.631-4.167-6.395-4.167Z" fill="#212121"></path>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">
             Add User
           </span>
-        </a>
-      </li>
-      <li class="nav-item mt-3">
-        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link  " href="#">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <title>customer-support</title>
-              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                  <g transform="translate(1716.000000, 291.000000)">
-                    <g transform="translate(1.000000, 0.000000)">
-                      <path class="color-background opacity-6" d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"></path>
-                      <path class="color-background" d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
-                      <path class="color-background" d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="#">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>customer-support</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(1.000000, 0.000000)">
+                        <path class="color-background opacity-6" d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"></path>
+                        <path class="color-background" d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
+                        <path class="color-background" d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
+                      </g>
                     </g>
                   </g>
                 </g>
-              </g>
-            </svg>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg"
+        [class.ps]="isSidebarShown" [class.ps--active-y]="isSidebarShown">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm">
+              <a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+            </li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
+              Dashboard
+            </li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">{{pageTitle | titlecase}}</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Type here...">
+            </div>
           </div>
-          <span class="nav-link-text ms-1">Profile</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</aside>
-<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg"
-      [class.g-sidenav-show]="isSidebarShown" [class.g-sidenav-pinned]="isSidebarShown">
-  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-    <div class="container-fluid py-1 px-3">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-          <li class="breadcrumb-item text-sm">
-            <a class="opacity-5 text-dark" href="javascript:;">Pages</a>
-          </li>
-          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-            Dashboard
-          </li>
-        </ol>
-        <h6 class="font-weight-bolder mb-0">{{pageTitle | titlecase}}</h6>
-      </nav>
-      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-          <div class="input-group">
-            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-            <input type="text" class="form-control" placeholder="Type here...">
-          </div>
-        </div>
-        <ul class="navbar-nav  justify-content-end">
-          <li class="nav-item px-3 d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-              <i class="fa fa-user me-sm-1"></i>
-              <span class="d-sm-inline d-none">Username</span>
-            </a>
-          </li>
-          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-            <a href="javascript:;" (click)="toggleSidebar()" class="nav-link text-body p-0" id="iconNavbarSidenav">
-              <div class="sidenav-toggler-inner">
-                <i class="sidenav-toggler-line"></i>
-                <i class="sidenav-toggler-line"></i>
-                <i class="sidenav-toggler-line"></i>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item dropdown ps-3 d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-bell cursor-pointer"></i>
-            </a>
-            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-              <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="d-flex py-1">
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Username</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" (click)="toggleSidebar()" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item dropdown ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
                     <span class="my-auto me-3">
                       <i class="fa fa-sign-out"></i>
                     </span>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="text-sm font-weight-normal mb-1 mt-1">
-                        <span class="font-weight-bold">Logout</span>
-                      </h6>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1 mt-1">
+                          <span class="font-weight-bold">Logout</span>
+                        </h6>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="javascript:;">
-                  <div class="d-flex py-1">
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
                     <span class="my-auto me-3">
                       <i class="fa fa-cog"></i>
                     </span>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="text-sm font-weight-normal mb-1 mt-1">
-                        <span class="font-weight-bold">Site Settings</span>
-                      </h6>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1 mt-1">
+                          <span class="font-weight-bold">Site Settings</span>
+                        </h6>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  <router-outlet/>
-</main>
+    </nav>
+    <router-outlet/>
+  </main>
+</div>
