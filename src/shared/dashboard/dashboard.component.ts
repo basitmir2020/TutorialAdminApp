@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {filter} from "rxjs";
-import {NavbarSidebarService} from "../services/navbar-sidebar.service";
+import PerfectScrollbar from "perfect-scrollbar";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,9 +17,9 @@ import {NavbarSidebarService} from "../services/navbar-sidebar.service";
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,AfterViewInit {
   pageTitle: string = '';
-  isMenuOpen: boolean = false;
+  isSidebarShown: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,10 +39,24 @@ export class DashboardComponent implements OnInit {
         }
         this.pageTitle = lastSegment;
         this.isSidebarShown = false;
-      });
+      });;
   }
 
-  isSidebarShown: boolean = false;
+  ngAfterViewInit(): void {
+    this.initializePerfectScrollbar();
+  }
+
+  private initializePerfectScrollbar(): void {
+    const mainpanel = this.elementRef.nativeElement.querySelector('.main-content');
+    const sidebar = this.elementRef.nativeElement.querySelector('.sidenav');
+    const fixedplugin = this.elementRef.nativeElement.querySelector('.fixed-plugin');
+    const navbarCollapse = this.elementRef.nativeElement.querySelector('.navbar-collapse');
+
+    new PerfectScrollbar(mainpanel);
+    new PerfectScrollbar(sidebar);
+    new PerfectScrollbar(fixedplugin);
+    new PerfectScrollbar(navbarCollapse);
+  }
 
   toggleSidebar() {
     this.isSidebarShown = !this.isSidebarShown;
