@@ -1,0 +1,107 @@
+<div class="container position-sticky z-index-sticky top-0">
+  <div class="row">
+    <div class="col-12">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+        <div class="container-fluid">
+          <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="/">
+            Tutorial App
+          </a>
+          <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" [routerLink]="['/admin/dashboard']">
+                  <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-2" [routerLink]="['/admin/dashboard']">
+                  <i class="fa fa-user opacity-6 text-dark me-1"></i>
+                  Profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-2" [routerLink]="['forgotPassword']">
+                  <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                  Forgot Password
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-2" [routerLink]="['/']">
+                  <i class="fas fa-key opacity-6 text-dark me-1"></i>
+                  Sign In
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<main class="main-content  mt-0">
+  <section>
+    <div class="page-header min-vh-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
+            <div class="card card-plain mt-5">
+              <div class="card-header text-center bg-transparent">
+                <h3 class="font-weight-bolder text-info text-gradient  pt-3" style="font-size: 32px !important;">
+                  Admin Login
+                </h3>
+              </div>
+              <div class="card-body mt-0 pt-0">
+                <form role="form">
+                  <div class="mb-3">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <mat-label>Email</mat-label>
+                      <input matInput placeholder="Email" class="form-control">
+                      <mat-hint>Enter your Email</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="mb-2">
+                    <mat-form-field  appearance="outline" style="width: 100%;">
+                      <mat-label>Enter your password</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-hint>Enter your Password</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="text-center">
+                    <button (click)="login()" type="button" class="btn bg-gradient-info w-100 mt-2 mb-0">
+                      Sign in
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                <p class="mb-4 text-sm mx-auto">
+                  <a [routerLink]="['forgotPassword']"
+                     class="text-info text-gradient font-weight-bold">
+                    Forgot Password</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
+              <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
+                   style="background-image:url('assets/img/curved-images/curved6.jpg')"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

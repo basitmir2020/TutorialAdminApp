@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
+import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
   selector: 'app-subject-add-chapter',
   standalone: true,
     imports: [
-        NgxSpinnerModule
+       NgxSpinnerModule
     ],
   templateUrl: './subject-add-chapter.component.html',
   styleUrl: './subject-add-chapter.component.css'

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-exam-types',
