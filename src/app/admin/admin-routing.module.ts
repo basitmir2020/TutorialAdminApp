@@ -7,10 +7,11 @@ import {
   SubjectAddChapterComponent
 } from "./components/exam-components/subject-add-chapter/subject-add-chapter.component";
 import {QuestionsComponent} from "./components/exam-components/questions/questions.component";
+import {authGuard} from "./guard/auth.guard";
 
 const routes: Routes = [
   {
-    path:'',component:DashboardComponent,
+    path:'',component:DashboardComponent,canActivate:[authGuard],
     children:[
       {path :'dashboard',component:IndexComponent},
       {path:'manage-exam-types',component:ExamTypesComponent},

@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, Rou
 import {NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {filter} from "rxjs";
 import PerfectScrollbar from "perfect-scrollbar";
+import {jwtDecode} from "jwt-decode";
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +21,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 export class DashboardComponent implements OnInit,AfterViewInit {
   pageTitle: string = '';
   isSidebarShown: boolean = false;
+  username :string;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,11 +41,17 @@ export class DashboardComponent implements OnInit,AfterViewInit {
         }
         this.pageTitle = lastSegment;
         this.isSidebarShown = false;
-      });;
+      });
+
+    let token  = localStorage.getItem("token");
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+    this.username = decodedToken['name'];
   }
 
   ngAfterViewInit(): void {
     this.initializePerfectScrollbar();
+
   }
 
   private initializePerfectScrollbar(): void {
@@ -60,5 +68,10 @@ export class DashboardComponent implements OnInit,AfterViewInit {
 
   toggleSidebar() {
     this.isSidebarShown = !this.isSidebarShown;
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }
