@@ -16,7 +16,8 @@ import {LoginService} from "./services/login.service";
 import {TokenResponseViewModel} from "./models/auth.model";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {LoginHttpService} from "./services/login-http.service";
-import {jwtDecode} from "jwt-decode";
+import {SharedService} from "../../../shared/services/shared.service";
+import {SharedHttpService} from "../../../shared/services/shared-http.service";
 
 @Component({
   selector: 'app-login',
@@ -36,6 +37,8 @@ import {jwtDecode} from "jwt-decode";
     HttpClient,
     LoginService,
     LoginHttpService,
+    SharedService,
+    SharedHttpService
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -48,7 +51,8 @@ export class LoginComponent implements OnInit{
     private _spinnerService : NgxSpinnerService,
     private _formBuilder : FormBuilder,
     private _toastrService : ToastrService,
-    private _loginService : LoginService
+    private _loginService : LoginService,
+    private _sharedService : SharedService
   ) {}
 
   ngOnInit(): void {
@@ -67,19 +71,24 @@ export class LoginComponent implements OnInit{
     if(this.loginFormGroup.valid){
       this._loginService.loginUser(this.loginFormGroup.value).subscribe((res:TokenResponseViewModel)=>{
         if(res.statusCode == 200 && res.success){
-          const decodedToken = jwtDecode(res.token);
-          if(decodedToken['role'] == "Admin"){
-            localStorage.setItem("token",String(res.token));
-            this.router.navigate(['admin/dashboard']).then();
-          }else{
-            this._spinnerService.hide().then();
-            this._toastrService.error("You Are Not Authorised!");
-          }
+          localStorage.setItem("token",String(res.token));
+          this._sharedService.loggedInUser().subscribe(user =>{
+            if(user.data.role == "Admin"){
+              this.router.navigate(['admin/dashboard']).then();
+            }else{
+             this._spinnerService.hide().then();
+             this._toastrService.error("You Are Not Authorised!");
+           }
+         });
         }else{
           this._spinnerService.hide().then();
           this._toastrService.error(res.message);
         }
       });
     }
+  }
+
+  hideShowPassword(){
+    this.hide = !this.hide
   }
 }

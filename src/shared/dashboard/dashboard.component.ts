@@ -1,10 +1,18 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import { Component, OnInit} from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {filter} from "rxjs";
+import {SharedService} from "../services/shared.service";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
+import {NavigationComponent} from "../navigation/navigation.component";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import Swal from "sweetalert2";
+import {
+  DeleteExamType
+} from "../../app/admin/components/exam-components/exam-types/manage-exam/model/all-exam-type.model";
 import PerfectScrollbar from "perfect-scrollbar";
-import {jwtDecode} from "jwt-decode";
-
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -14,64 +22,112 @@ import {jwtDecode} from "jwt-decode";
     NgOptimizedImage,
     TitleCasePipe,
     RouterLinkActive,
+    MatButtonModule, MatMenuModule,
+    MatIcon, NavigationComponent,SweetAlert2Module
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements OnInit,AfterViewInit {
+export class DashboardComponent implements OnInit {
   pageTitle: string = '';
   isSidebarShown: boolean = false;
+  showMenu: boolean = false;
   username :string;
+  role :string;
+  currentYear:number;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private elementRef: ElementRef) {
+    private _sharedService : SharedService
+  ) {
   }
 
   ngOnInit(): void {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        console.log(event.urlAfterRedirects)
-        const segments = event.urlAfterRedirects.split('/');
-        let lastSegment = segments.pop();
-        if (lastSegment.includes('-')) {
-          lastSegment = lastSegment.replace(/-/g, ' ');
+        const segments = event.url;
+        console.log(segments);
+        switch (segments){
+          case "/admin/dashboard":
+            this.pageTitle = "Dashboard";
+            break;
+          case "/admin/add-exam-types":
+            this.pageTitle = "Add Exam Type";
+            break;
+          case "/admin/manage-exam-types":
+            this.pageTitle = "Manage Exam Type";
+            break;
+          case "/admin/update-exam-type/":
+            this.pageTitle = "Update Exam Type";
+            break;
         }
-        this.pageTitle = lastSegment;
         this.isSidebarShown = false;
       });
+    this.getName();
+    let currentDate = new Date();
+    this.currentYear = currentDate.getFullYear();
+  }
 
-    let token  = localStorage.getItem("token");
-    const decodedToken = jwtDecode(token);
-    console.log(decodedToken);
-    this.username = decodedToken['name'];
+  getName(){
+    this._sharedService.loggedInUser().subscribe(res => {
+      if(res.success && res.statusCode == 200){
+        this.username = res.data.userName;
+        this.role = res.data.role;
+      }
+    });
+  }
+
+  logout(){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t to Logout!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Logout',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor:"#c92a2a",
+      cancelButtonColor:"#4c566a"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  toggleMenu(){
+    this.showMenu = !this.showMenu;
+  }
+
+  toggleNavItems(value : boolean){
+    this.isSidebarShown = !value;
   }
 
   ngAfterViewInit(): void {
     this.initializePerfectScrollbar();
-
   }
 
-  private initializePerfectScrollbar(): void {
-    const mainpanel = this.elementRef.nativeElement.querySelector('.main-content');
-    const sidebar = this.elementRef.nativeElement.querySelector('.sidenav');
-    const fixedplugin = this.elementRef.nativeElement.querySelector('.fixed-plugin');
-    const navbarCollapse = this.elementRef.nativeElement.querySelector('.navbar-collapse');
+  initializePerfectScrollbar(): void {
+    const mainpanel = document.getElementById('vertical-example'),
+      sidebar = document.getElementById('horizontal-example'),
+      navbarCollapse = document.getElementById('both-scrollbars-example');
 
-    new PerfectScrollbar(mainpanel);
-    new PerfectScrollbar(sidebar);
-    new PerfectScrollbar(fixedplugin);
-    new PerfectScrollbar(navbarCollapse);
-  }
-
-  toggleSidebar() {
-    this.isSidebarShown = !this.isSidebarShown;
-  }
-
-  logout(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    if (mainpanel) {
+      new PerfectScrollbar(mainpanel, {
+        wheelPropagation: false
+      });
+    }
+    if (sidebar) {
+      new PerfectScrollbar(sidebar, {
+        wheelPropagation: false,
+        suppressScrollY: true
+      });
+    }
+    if (navbarCollapse) {
+      new PerfectScrollbar(navbarCollapse, {
+        wheelPropagation: false
+      });
+    }
   }
 }

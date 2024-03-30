@@ -1,0 +1,75 @@
+<ngx-spinner
+  bgColor="rgba(247,247,247,0.8"
+  size="medium"
+  color="#696cff"
+  type="line-scale"
+  [fullScreen]="true">
+</ngx-spinner>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Add Exam Type</h5>
+        <small class="text-muted float-end">Ex. (Medical -> Neet,Engineering -> Jee)</small>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="examTypeFormGroup" (ngSubmit)="saveExamType()">
+          <div class="row">
+            <div class="col mb-3">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Select Country</mat-label>
+                <select matNativeControl required
+                        formControlName="countryId"
+                        [errorStateMatcher]="matcher">
+                  <option value="default" selected>Select</option>
+                  <option *ngFor="let country of countries"
+                          [value]="country.id">{{ country.countryName }}</option>
+                </select>
+                <mat-hint>Select Country</mat-hint>
+                <mat-error *ngIf="examTypeFormGroup.get('countryId').hasError('required')">
+                  Select
+                  <strong>Country!</strong>
+                </mat-error>
+                <mat-error *ngIf="examTypeFormGroup.get('countryId').hasError('dropdown')">
+                  Invalid Country Selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Exam Type</mat-label>
+                <input type="text" matInput
+                       placeholder="Exam Type"
+                       formControlName="examType"
+                       [errorStateMatcher]="matcher">
+                <mat-hint>Enter Exam Type</mat-hint>
+                @if (examTypeFormGroup.get('examType').hasError('required')) {
+                  <mat-error>Exam Type is <strong>required!</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Exam Sub Type</mat-label>
+                <input type="text" matInput
+                       placeholder="Exam Sub Type" formControlName="examSubType" [errorStateMatcher]="matcher">
+                <mat-hint>Enter Exam Sub Type</mat-hint>
+                @if (examTypeFormGroup.get('examSubType').hasError('required')) {
+                  <mat-error>Exam Sub Type is <strong>required!</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="col" style="margin-top: 15px;">
+              <input
+                [disabled]="!examTypeFormGroup.valid"
+                class="btn rounded-pill btn-primary"
+                type="submit" value=" Add Exam Type"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
