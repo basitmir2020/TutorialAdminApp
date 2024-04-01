@@ -30,6 +30,6 @@ export const appConfig: ApplicationConfig = {
     }),
     {
       provide : HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true
-    }
+    }, provideAnimationsAsync()
   ],
 };
