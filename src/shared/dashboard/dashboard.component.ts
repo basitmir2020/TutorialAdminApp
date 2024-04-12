@@ -6,12 +6,8 @@ import {SharedService} from "../services/shared.service";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
-import {NavigationComponent} from "../navigation/navigation.component";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import Swal from "sweetalert2";
-import {
-  DeleteExamType
-} from "../../app/admin/components/exam-components/exam-types/manage-exam/model/all-exam-type.model";
 import PerfectScrollbar from "perfect-scrollbar";
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +19,7 @@ import PerfectScrollbar from "perfect-scrollbar";
     TitleCasePipe,
     RouterLinkActive,
     MatButtonModule, MatMenuModule,
-    MatIcon, NavigationComponent,SweetAlert2Module
+    MatIcon,SweetAlert2Module
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
