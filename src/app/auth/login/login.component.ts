@@ -14,7 +14,7 @@ import {NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 import {LoginService} from "./services/login.service";
 import {TokenResponseViewModel} from "./models/auth.model";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {LoginHttpService} from "./services/login-http.service";
 import {SharedService} from "../../../shared/services/shared.service";
 import {SharedHttpService} from "../../../shared/services/shared-http.service";

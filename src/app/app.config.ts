@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule, provideClientHydration, withHttpTransferCacheOptions} from "@angular/platform-browser";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {provideToastr} from "ngx-toastr";
-import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import {SharedService} from "../shared/services/shared.service";
 import {SharedHttpService} from "../shared/services/shared-http.service";
 import {JwtInterceptor} from "../shared/interceptor/jwt.interceptor";

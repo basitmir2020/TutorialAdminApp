@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import {environment} from "../../../../../../../environments/environment";
 import {ResponseViewModelGeneric} from "../../../../../../../shared/models/response.generic.model";
 import {ChangeStatus, DeleteExamType, GetAllExamTypes} from "../model/all-exam-type.model";
