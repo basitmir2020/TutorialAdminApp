@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ManageExamHttpTypeService} from "./manage-exam-http-type.service";
 import {ChangeStatus, DeleteExamType} from "../model/all-exam-type.model";
-import {ResponseModel} from "../../../../../../../shared/models/response.model";
 
 @Injectable({
   providedIn: 'root'
