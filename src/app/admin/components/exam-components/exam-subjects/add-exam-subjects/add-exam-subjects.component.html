@@ -1,1 +1,65 @@
-<p>add-exam-subjects works!</p>
+<ngx-spinner
+  bgColor="rgba(247,247,247,0.8"
+  size="medium"
+  color="#696cff"
+  type="line-scale"
+  [fullScreen]="true">
+</ngx-spinner>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Add Exam Subjects</h5>
+        <small class="text-muted float-end">Ex. (Physics,Biology,Chemistry)</small>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="examSubjectsFormGroup" (ngSubmit)="saveExamSubjects()">
+          <div class="row">
+            <div class="col mb-3">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Select Exam Type</mat-label>
+                <select matNativeControl required
+                        formControlName="examTypeId"
+                        [errorStateMatcher]="matcher">
+                  <option value="default" selected>Select</option>
+                  <option *ngFor="let examType of examTypes"
+                          [value]="examType.id">{{ examType.examType }}</option>
+                </select>
+                <mat-hint>Select Exam Type</mat-hint>
+                <mat-error *ngIf="examSubjectsFormGroup.get('examTypeId').hasError('required')">
+                  Select
+                  <strong>Exam Type!</strong>
+                </mat-error>
+                <mat-error *ngIf="examSubjectsFormGroup.get('examTypeId').hasError('dropdown')">
+                  Invalid Exam Type Selected
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Subject Name</mat-label>
+                <input type="text" matInput
+                       placeholder="Subject Name"
+                       formControlName="subjectName"
+                       [errorStateMatcher]="matcher">
+                <mat-hint>Enter Subject Name</mat-hint>
+                @if (examSubjectsFormGroup.get('subjectName').hasError('required')) {
+                  <mat-error>Subject name is <strong>required!</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" style="margin-top: 15px;">
+              <input
+                [disabled]="!examSubjectsFormGroup.valid"
+                class="btn rounded-pill btn-primary"
+                type="submit" value="Add Subjects"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

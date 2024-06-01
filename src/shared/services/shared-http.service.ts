@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {CountryDto, UserDto} from "../models/common.model";
+import {CountryDto, ExamSubjectsVM, ExamTypeVM, UserDto} from "../models/common.model";
 import {ResponseViewModelGeneric} from "../models/response.generic.model";
 
 @Injectable({
@@ -11,6 +11,7 @@ import {ResponseViewModelGeneric} from "../models/response.generic.model";
 export class SharedHttpService {
   private dataCache$: BehaviorSubject<ResponseViewModelGeneric<UserDto>> = new BehaviorSubject<ResponseViewModelGeneric<UserDto>>(null);
   private countryCached$: BehaviorSubject<ResponseViewModelGeneric<CountryDto[]>> = new BehaviorSubject<ResponseViewModelGeneric<CountryDto[]>>(null);
+  private examTypesCached$: BehaviorSubject<ResponseViewModelGeneric<ExamTypeVM[]>> = new BehaviorSubject<ResponseViewModelGeneric<ExamTypeVM[]>>(null);
   private readonly _apiURL:string;
 
   constructor(private _http:HttpClient) {
@@ -42,6 +43,21 @@ export class SharedHttpService {
       return this._http.get<ResponseViewModelGeneric<CountryDto[]>>(url,{headers:headers}).pipe(
         tap(data =>{
           this.countryCached$.next(data);
+        })
+      );
+    }
+  }
+
+  getExamTypes():Observable<ResponseViewModelGeneric<ExamTypeVM[]>>{
+    const cachedData = this.examTypesCached$.getValue();
+    if(cachedData){
+      return this.examTypesCached$.asObservable();
+    }else{
+      let url = `${this._apiURL}Exam/SelectExamTypes`;
+      const headers= new HttpHeaders({'Content-Type':'application/json'});
+      return this._http.get<ResponseViewModelGeneric<ExamTypeVM[]>>(url,{headers:headers}).pipe(
+        tap(data =>{
+          this.examTypesCached$.next(data);
         })
       );
     }

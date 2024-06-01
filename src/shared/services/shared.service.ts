@@ -42,4 +42,8 @@ export class SharedService {
   getCountries(){
     return this._sharedHttpService.getCountries();
   }
+
+  getExamTypes(){
+    return this._sharedHttpService.getExamTypes();
+  }
 }

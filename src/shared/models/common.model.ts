@@ -11,3 +11,14 @@ export class CountryDto {
   countryName: string;
   countryCode: string;
 }
+
+export class ExamTypeVM
+{
+  id : number;
+  examType : string;
+}
+
+export class ExamSubjectsVM {
+  id : number;
+  subjectName : string;
+}
