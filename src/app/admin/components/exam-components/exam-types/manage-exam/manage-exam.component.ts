@@ -8,7 +8,6 @@ import {MatPaginator, MatPaginatorModule, PageEvent} from "@angular/material/pag
 import {MatInputModule} from "@angular/material/input";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
-import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import Swal from 'sweetalert2';
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
@@ -25,7 +24,6 @@ import {Router} from "@angular/router";
     MatInputModule,
     MatButtonModule,
     MatMenuModule,
-    SweetAlert2Module
   ],
   templateUrl: './manage-exam.component.html',
   styleUrl: './manage-exam.component.css'

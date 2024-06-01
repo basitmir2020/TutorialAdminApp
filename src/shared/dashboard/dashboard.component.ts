@@ -6,9 +6,8 @@ import {SharedService} from "../services/shared.service";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
-import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
-import Swal from "sweetalert2";
 import PerfectScrollbar from "perfect-scrollbar";
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -19,7 +18,7 @@ import PerfectScrollbar from "perfect-scrollbar";
     TitleCasePipe,
     RouterLinkActive,
     MatButtonModule, MatMenuModule,
-    MatIcon,SweetAlert2Module
+    MatIcon
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
