@@ -82,13 +82,15 @@
         Exam
       </span>
           </li>
-          <li class="menu-item" [class.open]="isSidebarShown == true"
-              [class.active]="isSidebarShown == true" (click)="toggleNavItems(isSidebarShown)">
+          <li class="menu-item"
+              [class.open]="menuStates['examType']"
+              [class.active]="menuStates['examType']"
+              (click)="toggleNavItems($event, 'examType')">
             <a class="menu-link menu-toggle" href="javascript:void(0);">
               <i class="menu-icon tf-icons bx bx-layout"></i>
               <div data-i18n="Layouts">Exam Type</div>
             </a>
-            <ul class="menu-sub">
+            <ul class="menu-sub" (click)="$event.stopPropagation()">
               <li class="menu-item" routerLinkActive="active">
                 <a class="menu-link" [routerLink]="['add-exam-types']">
                   <div data-i18n="Without menu">Add Exam Type</div>
@@ -101,11 +103,36 @@
               </li>
             </ul>
           </li>
+
+          <li class="menu-item"
+              [class.open]="menuStates['examSubjects']"
+              [class.active]="menuStates['examSubjects']"
+              (click)="toggleNavItems($event, 'examSubjects')">
+            <a class="menu-link menu-toggle" href="javascript:void(0);">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Exam Subjects</div>
+            </a>
+            <ul class="menu-sub" (click)="$event.stopPropagation()">
+              <li class="menu-item" routerLinkActive="active">
+                <a class="menu-link" [routerLink]="['add-exam-subjects']">
+                  <div data-i18n="Without menu">Add Subjects</div>
+                </a>
+              </li>
+              <li class="menu-item" routerLinkActive="active">
+                <a class="menu-link" [routerLink]="['manage-exam-subjects']">
+                  <div data-i18n="Without navbar">Manage Subjects</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
         </ul>
       </aside>
       <div class="layout-page">
-        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-             id="layout-navbar">
+        <nav
+          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+          id="layout-navbar">
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" (click)="toggleMenu()">
               <i class="bx bx-menu bx-sm"></i>
@@ -130,7 +157,7 @@
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle"/>
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -139,12 +166,12 @@
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
-                            <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                            <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle"/>
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block">{{username | titlecase}}</span>
-                          <small class="text-muted">{{role | titlecase}}</small>
+                          <span class="fw-semibold d-block">{{ username | titlecase }}</span>
+                          <small class="text-muted">{{ role | titlecase }}</small>
                         </div>
                       </div>
                     </a>
@@ -182,7 +209,7 @@
           <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4">
               <!--<span class="text-muted fw-light">Dashboard</span>-->
-              {{pageTitle | titlecase}}
+              {{ pageTitle | titlecase }}
             </h4>
             <router-outlet/>
           </div>
@@ -198,7 +225,7 @@
                     target="_blank"
                     class="footer-text fw-bolder"
                   >Tutorial App</a>
-                  © {{currentYear}}
+                  © {{ currentYear }}
                 </div>
                 <div>
                   <a href="javascript:void(0)" (click)="logout()" class="btn btn-sm btn-outline-danger">

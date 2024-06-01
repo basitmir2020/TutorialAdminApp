@@ -1,10 +1,9 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import {AdminModule} from "./admin/admin.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BrowserModule, provideClientHydration, withHttpTransferCacheOptions} from "@angular/platform-browser";
+import {BrowserModule} from "@angular/platform-browser";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {provideToastr} from "ngx-toastr";
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";

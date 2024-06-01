@@ -26,7 +26,10 @@ import PerfectScrollbar from "perfect-scrollbar";
 })
 export class DashboardComponent implements OnInit {
   pageTitle: string = '';
-  isSidebarShown: boolean = false;
+  menuStates: { [key: string]: boolean } = {
+    examType: false,
+    examSubjects: false
+  };
   showMenu: boolean = false;
   username :string;
   role :string;
@@ -58,7 +61,6 @@ export class DashboardComponent implements OnInit {
             this.pageTitle = "Update Exam Type";
             break;
         }
-        this.isSidebarShown = false;
       });
     this.getName();
     let currentDate = new Date();
@@ -96,8 +98,13 @@ export class DashboardComponent implements OnInit {
     this.showMenu = !this.showMenu;
   }
 
-  toggleNavItems(value : boolean){
-    this.isSidebarShown = !value;
+  toggleNavItems(event: Event, key: string) {
+    event.stopPropagation(); // Prevent event bubbling
+    this.menuStates[key] = !this.menuStates[key];
+  }
+
+  preventParentToggle(event: Event) {
+    event.stopPropagation(); // Stop the click event from bubbling up to the parent
   }
 
   ngAfterViewInit(): void {
