@@ -42,7 +42,7 @@
                        placeholder="Chapter Name"
                        formControlName="chapterName"
                        [errorStateMatcher]="matcher">
-                <mat-hint>Enter Exam Type</mat-hint>
+                <mat-hint>Enter Chapter Name</mat-hint>
                 @if (subjectChaptersFormGroup.get('chapterName').hasError('required')) {
                   <mat-error>Chapter Name is <strong>required!</strong></mat-error>
                 }
