@@ -12,6 +12,12 @@ import {
 import {
   ManageExamSubjectsComponent
 } from "./components/exam-components/exam-subjects/manage-exam-subjects/manage-exam-subjects.component";
+import {
+  AddSubjectChaptersComponent
+} from "./components/exam-components/subject-chapters/add-subject-chapters/add-subject-chapters.component";
+import {
+  ManageSubjectChaptersComponent
+} from "./components/exam-components/subject-chapters/manage-subject-chapters/manage-subject-chapters.component";
 
 const routes: Routes = [
   {
@@ -23,6 +29,8 @@ const routes: Routes = [
       {path:'update-exam-type/:id',component:UpdateExamComponent},
       {path:'add-exam-subjects',component:AddExamSubjectsComponent},
       {path:'manage-exam-subjects',component:ManageExamSubjectsComponent},
+      {path:'add-subject-chapters',component:AddSubjectChaptersComponent},
+      {path:'manage-subject-chapters',component:ManageSubjectChaptersComponent},
       {path:'',redirectTo:'/admin/dashboard',pathMatch:'full'}
     ]
   }

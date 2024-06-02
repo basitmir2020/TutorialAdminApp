@@ -22,3 +22,15 @@ export class ExamSubjectsVM {
   id : number;
   subjectName : string;
 }
+
+class SubjectChaptersVM {
+  id: number;
+  chapterName: string;
+  sequence: number;
+
+  constructor(id: number, chapterName: string, sequence: number) {
+    this.id = id;
+    this.chapterName = chapterName;
+    this.sequence = sequence;
+  }
+}

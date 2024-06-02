@@ -46,4 +46,8 @@ export class SharedService {
   getExamTypes(){
     return this._sharedHttpService.getExamTypes();
   }
+
+  getExamSubjects(){
+    return this._sharedHttpService.getExamSubjects();
+  }
 }

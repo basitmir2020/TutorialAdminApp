@@ -12,6 +12,7 @@ export class SharedHttpService {
   private dataCache$: BehaviorSubject<ResponseViewModelGeneric<UserDto>> = new BehaviorSubject<ResponseViewModelGeneric<UserDto>>(null);
   private countryCached$: BehaviorSubject<ResponseViewModelGeneric<CountryDto[]>> = new BehaviorSubject<ResponseViewModelGeneric<CountryDto[]>>(null);
   private examTypesCached$: BehaviorSubject<ResponseViewModelGeneric<ExamTypeVM[]>> = new BehaviorSubject<ResponseViewModelGeneric<ExamTypeVM[]>>(null);
+  private examSubjectsCached$: BehaviorSubject<ResponseViewModelGeneric<ExamSubjectsVM[]>> = new BehaviorSubject<ResponseViewModelGeneric<ExamSubjectsVM[]>>(null);
   private readonly _apiURL:string;
 
   constructor(private _http:HttpClient) {
@@ -58,6 +59,21 @@ export class SharedHttpService {
       return this._http.get<ResponseViewModelGeneric<ExamTypeVM[]>>(url,{headers:headers}).pipe(
         tap(data =>{
           this.examTypesCached$.next(data);
+        })
+      );
+    }
+  }
+
+  getExamSubjects():Observable<ResponseViewModelGeneric<ExamSubjectsVM[]>>{
+    const cachedData = this.examSubjectsCached$.getValue();
+    if(cachedData){
+      return this.examSubjectsCached$.asObservable();
+    }else{
+      let url = `${this._apiURL}ExamSubjects/SelectExamSubjects`;
+      const headers= new HttpHeaders({'Content-Type':'application/json'});
+      return this._http.get<ResponseViewModelGeneric<ExamSubjectsVM[]>>(url,{headers:headers}).pipe(
+        tap(data =>{
+          this.examSubjectsCached$.next(data);
         })
       );
     }

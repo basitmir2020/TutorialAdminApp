@@ -125,6 +125,27 @@
               </li>
             </ul>
           </li>
+          <li class="menu-item"
+              [class.open]="menuStates['subjectsChapters']"
+              [class.active]="menuStates['subjectsChapters']"
+              (click)="toggleNavItems($event, 'subjectsChapters')">
+            <a class="menu-link menu-toggle" href="javascript:void(0);">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Subject Chapters</div>
+            </a>
+            <ul class="menu-sub" (click)="$event.stopPropagation()">
+              <li class="menu-item" routerLinkActive="active">
+                <a class="menu-link" [routerLink]="['add-subject-chapters']">
+                  <div data-i18n="Without menu">Add Subject Chapters</div>
+                </a>
+              </li>
+              <li class="menu-item" routerLinkActive="active">
+                <a class="menu-link" [routerLink]="['manage-subject-chapters']">
+                  <div data-i18n="Without navbar">Manage Subject Chapters</div>
+                </a>
+              </li>
+            </ul>
+          </li>
 
 
         </ul>

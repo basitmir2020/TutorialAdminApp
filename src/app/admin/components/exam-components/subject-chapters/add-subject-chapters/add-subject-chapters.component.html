@@ -1,0 +1,64 @@
+<ngx-spinner
+  bgColor="rgba(247,247,247,0.8"
+  size="medium"
+  color="#696cff"
+  type="line-scale"
+  [fullScreen]="true">
+</ngx-spinner>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Add Subject Chapters</h5>
+        <!--<small class="text-muted float-end">Ex. (Medical -> Neet,Engineering -> Jee)</small>-->
+      </div>
+      <div class="card-body">
+        <form [formGroup]="subjectChaptersFormGroup" (ngSubmit)="saveSubjectChapters()">
+          <div class="row">
+            <div class="col mb-3">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Select Subject</mat-label>
+                <select matNativeControl required
+                        formControlName="subjectId"
+                        [errorStateMatcher]="matcher">
+                  <option value="default" selected>Select</option>
+                  <option *ngFor="let examSubject of examSubjects"
+                          [value]="examSubject.id">{{ examSubject.subjectName }}</option>
+                </select>
+                <mat-hint>Select Subject</mat-hint>
+                <mat-error *ngIf="subjectChaptersFormGroup.get('subjectId').hasError('required')">
+                  Select
+                  <strong>Subject!</strong>
+                </mat-error>
+                <mat-error *ngIf="subjectChaptersFormGroup.get('subjectId').hasError('dropdown')">
+                  Invalid Subject Selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                <mat-label>Chapter Name</mat-label>
+                <input type="text" matInput
+                       placeholder="Chapter Name"
+                       formControlName="chapterName"
+                       [errorStateMatcher]="matcher">
+                <mat-hint>Enter Exam Type</mat-hint>
+                @if (subjectChaptersFormGroup.get('chapterName').hasError('required')) {
+                  <mat-error>Chapter Name is <strong>required!</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" style="margin-top: 15px;">
+              <input
+                [disabled]="!subjectChaptersFormGroup.valid"
+                class="btn rounded-pill btn-primary"
+                type="submit" value="Add Subject Chapters"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
